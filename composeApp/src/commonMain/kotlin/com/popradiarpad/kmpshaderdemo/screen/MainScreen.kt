@@ -6,7 +6,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import com.popradiarpad.kmpshaderdemo.util.runPointerInputShader
 import kmpshaderdemo.composeapp.generated.resources.Res
 import kmpshaderdemo.composeapp.generated.resources.background
 import org.jetbrains.compose.resources.painterResource
@@ -89,7 +91,7 @@ private fun Background() {
 @Composable
 private fun GlowingRing(modifier: Modifier = Modifier) {
     Box(
-//        modifier = modifier.runPointerInputShader(HUE_GLOW_SHADER1, color1 = Color.Green),
+        modifier = modifier.runPointerInputShader(HUE_GLOW_SHADER1, color1 = Color.Green),
     ) {}
 }
 

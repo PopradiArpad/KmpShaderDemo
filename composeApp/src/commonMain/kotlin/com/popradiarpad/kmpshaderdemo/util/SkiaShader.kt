@@ -39,6 +39,7 @@ fun rememberTimeFullFPS_S() = produceState(0f) {
 
 /**
  * The time as State since entering into composition in circa 30 FPS tact in second.
+π * For the glowing ring effect fast enough.
  */
 @Composable
 fun rememberTime30FPS_S() = produceState(0f) {

@@ -1,4 +1,4 @@
-# Shader integration in Compose Multiplatform Demo targeting Android, iOS, Web, Desktop (JVM)
+# KMP Shader Demo: Universal Shaders for Android, iOS, and Web
 
 https://github.com/user-attachments/assets/9ae9a95b-6e84-4fa0-b4cc-1edcd466d287
 

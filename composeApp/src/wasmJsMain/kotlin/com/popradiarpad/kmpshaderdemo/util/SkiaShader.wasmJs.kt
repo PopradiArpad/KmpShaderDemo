@@ -17,7 +17,7 @@ import org.jetbrains.skia.RuntimeEffect
 import org.jetbrains.skia.RuntimeShaderBuilder
 
 @Composable
-actual fun Modifier.runPointerInputShader(
+actual fun Modifier.runPointerInputTimeShader(
     shaderCode: String,
     color1: Color?
 ): Modifier {
@@ -25,7 +25,7 @@ actual fun Modifier.runPointerInputShader(
         RuntimeShaderBuilder(RuntimeEffect.makeForShader(shaderCode))
     }
 
-    val timeS by rememberTimeFullFPS_S()
+    val timeS by rememberTimeMaxFPS_S()
 
     remember(builder, color1) {
         if (color1 != null) {

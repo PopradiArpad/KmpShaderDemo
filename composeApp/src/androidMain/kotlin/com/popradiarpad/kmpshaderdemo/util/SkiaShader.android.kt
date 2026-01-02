@@ -66,12 +66,12 @@ private val Color.toAndroidColor: android.graphics.Color
     get() = android.graphics.Color.valueOf(toArgb())
 
 @Composable
-actual fun Modifier.runPointerInputShader(
+actual fun Modifier.runPointerInputTimeShader(
     shaderCode: String, color1: Color?
 ): Modifier {
     val shader = remember(shaderCode) { RuntimeShader(shaderCode) }
     val brush = remember(shader) { ShaderBrush(shader) }
-    val timeS by rememberTimeFullFPS_S()
+    val timeS by rememberTimeMaxFPS_S()
     remember(shader, color1) {
         if (color1 != null) shader.setColorUniform("uColor1", color1.toAndroidColor)
         true

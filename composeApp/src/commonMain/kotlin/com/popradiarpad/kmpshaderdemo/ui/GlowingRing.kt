@@ -3,17 +3,20 @@ package com.popradiarpad.kmpshaderdemo.ui
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.popradiarpad.kmpshaderdemo.util.runPointerInputShader
+import com.popradiarpad.kmpshaderdemo.util.runPointerInputTimeShader
 
 @Composable
 fun GlowingRing(modifier: Modifier = Modifier) {
     Box(
-        modifier = modifier.runPointerInputShader(ROTATING_HUE_GLOWING_RING_SHADER),
+        modifier = modifier.runPointerInputTimeShader(ROTATING_HUE_GLOWING_RING_SHADER),
     ) {}
 }
 
 /**
- * A shader for [Modifier.runPointerInputShader] shader runner.
+ * A shader for [Modifier.runPointerInputTimeShader] shader runner.
+ *
+ * The shader shall use SkSL to be multiplatform:
+ * SkSL will be translated into the platform specific shader languages.
  */
 // language=GLSL
 private const val ROTATING_HUE_GLOWING_RING_SHADER = """

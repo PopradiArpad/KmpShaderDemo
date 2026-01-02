@@ -23,13 +23,13 @@ import kotlin.time.measureTime
  * layout(color) uniform half4 uColor1; // A color parameter
  */
 @Composable
-expect fun Modifier.runPointerInputShader(shaderCode: String, color1: Color? = null): Modifier
+expect fun Modifier.runPointerInputTimeShader(shaderCode: String, color1: Color? = null): Modifier
 
 /**
- * The time as State since entering into composition in 60 FPS tact in second.
+ * The time in second since entering into composition in max FPS tact.
  */
 @Composable
-fun rememberTimeFullFPS_S() = produceState(0f) {
+fun rememberTimeMaxFPS_S() = produceState(0f) {
     while (true) {
         withInfiniteAnimationFrameMillis { frameTimeMillis ->
             value = frameTimeMillis / 1000f
@@ -38,8 +38,8 @@ fun rememberTimeFullFPS_S() = produceState(0f) {
 }
 
 /**
- * The time as State since entering into composition in circa 30 FPS tact in second.
-π * For the glowing ring effect fast enough.
+ * The time in second since entering into composition in circa 30 FPS tact.
+ * For the glowing ring effect fast enough.
  */
 @Composable
 fun rememberTime30FPS_S() = produceState(0f) {

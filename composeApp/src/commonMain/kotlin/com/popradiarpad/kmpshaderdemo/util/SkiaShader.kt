@@ -11,7 +11,7 @@ import kotlin.time.measureTime
 
 /**
  * A Modifier that runs a shader creating a background of the Composable applied to,
- * in opposite to manipulating the appearance of the containing Composables.
+ * in opposite to manipulating the appearance of the contained Composables.
  * The shader gets some parameters and must be prepared to handle them.
  *
  * The shader must have the following uniforms:

@@ -58,8 +58,7 @@ actual fun Modifier.runPointerInputTimeBackgroundShader(
 }
 
 /**
- * This shader runner treats the entire UI component as an input image:
- * manipulates the appearance of the contained Composables of the Composable this modifier applied to.
+ * This shader runner treats the entire UI component (with children) as an input image.
  *
  * It needs:
  *

@@ -10,8 +10,9 @@ import kotlin.time.Duration
 import kotlin.time.measureTime
 
 /**
- * A Modifier that runs a shader creating a background of the Composable applied to,
- * in opposite to manipulating the appearance of the contained Composables.
+ * This shader runner can manipulate the background of the Composable applied to,
+ * but can not manipulate appearance of the children.
+ *
  * The shader gets some parameters and must be prepared to handle them.
  *
  * The shader must have the following uniforms:

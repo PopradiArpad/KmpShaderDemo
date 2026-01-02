@@ -16,6 +16,11 @@ import androidx.compose.ui.layout.onSizeChanged
 import org.jetbrains.skia.RuntimeEffect
 import org.jetbrains.skia.RuntimeShaderBuilder
 
+/**
+ * The Skiko implementation for all non-Android platforms.
+ * Unfortunately I don't know how to put this into a source set for all such platforms
+ * to avoid code multiplication.
+ */
 @Composable
 actual fun Modifier.runPointerInputTimeBackgroundShader(
     shaderCode: String,
@@ -49,7 +54,7 @@ actual fun Modifier.runPointerInputTimeBackgroundShader(
     }.drawWithCache {
         // update when State or Size changes.
 
-//        l.d {"timeS: $timeS"}
+        // l.d {"timeS: $timeS"}
         builder.uniform("uTimeS", timeS)
 
         onDrawBehind {

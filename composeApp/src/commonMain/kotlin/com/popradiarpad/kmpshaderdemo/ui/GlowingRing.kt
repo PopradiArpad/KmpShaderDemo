@@ -75,7 +75,7 @@ private const val ROTATING_HUE_GLOWING_RING_SHADER = """
         // Calculate the angle (0 to 2*PI) and normalize it to [0..1] for the Hue.
         // atan2 returns angle; we add uTimeS to make the colors spin.
         float angle = atan(direction.y, direction.x) / 6.28318 + 0.5;
-        float hue = fract(angle + uTimeS * 0.2);
+        float hue = fract(angle + uTimeS * 0.5);
         half4 color = hueToRgba(hue);
         
         // Determine intensity: the glow around the ring.

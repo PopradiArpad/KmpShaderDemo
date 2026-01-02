@@ -11,7 +11,7 @@ The shader language is *SkSL - Skia Shading Language*,
 allowing to write one shader for all platforms.
 
 ### Inputs for the Shader
-The shader runner delivers time and tap position.
+πThe shader runner delivers time and tap position to the shader.
 
 ## The Shader in the Video
 is documented in the code.

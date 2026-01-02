@@ -7,16 +7,13 @@ Implemented as a modifier.
 
 ### Platform specific implementation
 The shader runner is platform specific: one for Android the other is for all the other platforms
-using Skiko (Skia for Kotlin) as graphic engine. The sh
-
-
-ader language is SkSL - Skia Shading Language,
+using Skiko (Skia for Kotlin) as graphic engine. The shader language is *SkSL - Skia Shading Language*,
 allowing to write one shader for all platforms.
 
 ### Inputs for the Shader
 The shader runner delivers time and tap position.
 
-## The Shader on the image
+## The Shader in the Video
 is documented in the code.
 
 ## Build and Run

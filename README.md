@@ -1,8 +1,7 @@
 # Shader integration in Compose Multiplatform, Demo targeting Android, iOS, Web, Desktop (JVM)π
 
-![glowing ring](doc/glowing_ring.jpg)
 <div style="text-align: center;">
-  <video src="doc/rotating_hue_ring.mp4" width="500" muted loop autoplay></video>
+π  <video src="doc/rotating_hue_ring.mp4" width="500" muted loop autoplay playsinline></video>
 </div>
 
 ## The Shader Runner

@@ -21,6 +21,9 @@ import androidx.compose.ui.layout.onSizeChanged
 
 /**
  * Android implementation using the Android specific RuntimeShader.
+ * this is a cuckoo's egg, because Android does not use Skiko.
+ * While Compose Multiplatform on Desktop, iOS, and Web is powered by Skiko (a Kotlin wrapper for the Skia graphics engine),
+ * Compose on Android is built directly on top of the native Android Canvas and Graphics pipeline.
  */
 @Composable
 actual fun Modifier.runPointerInputTimeBackgroundShader(

@@ -1,4 +1,4 @@
-# Shader integration in Compose Multiplatform, Demo targeting Android, iOS, Web, Desktop (JVM).
+# Shader integration in Compose Multiplatform, Demo targeting Android, iOS, Web, Desktop (JVM)π
 
 ![glowing ring](doc/glowing_ring.jpg)
 <div style="text-align: center;">

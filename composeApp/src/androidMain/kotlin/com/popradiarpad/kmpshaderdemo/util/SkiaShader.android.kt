@@ -59,6 +59,7 @@ actual fun Modifier.runPointerInputTimeBackgroundShader(
 
 /**
  * This shader runner treats the entire UI component (with children) as an input image.
+ * It samples the actual buttons, text, image, etc.
  *
  * It needs:
  *

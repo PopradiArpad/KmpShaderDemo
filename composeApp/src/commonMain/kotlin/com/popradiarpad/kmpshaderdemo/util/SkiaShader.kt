@@ -12,6 +12,7 @@ import kotlin.time.measureTime
 /**
  * This shader runner can manipulate the background of the Composable applied to,
  * but can not manipulate appearance of the children.
+ * It samples only the background.
  *
  * The shader gets some parameters and must be prepared to handle them.
  *

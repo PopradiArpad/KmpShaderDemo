@@ -17,7 +17,7 @@ import org.jetbrains.skia.RuntimeEffect
 import org.jetbrains.skia.RuntimeShaderBuilder
 
 @Composable
-actual fun Modifier.runPointerInputTimeShader(
+actual fun Modifier.runPointerInputTimeBackgroundShader(
     shaderCode: String,
     color1: Color?
 ): Modifier {

@@ -19,7 +19,9 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onSizeChanged
 
-
+/**
+ * Android implementation using the Android specific RuntimeShader.
+ */
 @Composable
 actual fun Modifier.runPointerInputTimeBackgroundShader(
     shaderCode: String, color1: Color?

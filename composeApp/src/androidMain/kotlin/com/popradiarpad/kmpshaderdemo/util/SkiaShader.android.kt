@@ -21,7 +21,7 @@ import androidx.compose.ui.layout.onSizeChanged
 
 
 @Composable
-actual fun Modifier.runPointerInputTimeShader(
+actual fun Modifier.runPointerInputTimeBackgroundShader(
     shaderCode: String, color1: Color?
 ): Modifier {
     val shader = remember(shaderCode) { RuntimeShader(shaderCode) }
@@ -58,7 +58,9 @@ actual fun Modifier.runPointerInputTimeShader(
 }
 
 /**
- * An alternative shader runner working on lower level.
+ * This shader runner treats the entire UI component as an input image:
+ * manipulates the appearance of the contained Composables of the Composable this modifier applied to.
+ *
  * It needs:
  *
  * 1. a triggering graphics layer in the Modifier chain
@@ -68,7 +70,7 @@ actual fun Modifier.runPointerInputTimeShader(
  * 2. Explicit takeover of the background with the same name used in the shader.
  */
 @Composable
-fun Modifier.alternativeTimeShader(shaderCode: String, time: Float?, color1: Color?): Modifier {
+fun Modifier.runTimeManipulatingShader(shaderCode: String, time: Float?, color1: Color?): Modifier {
     val shader = remember(shaderCode) { RuntimeShader(shaderCode) }
     if (time != null) shader.setFloatUniform("uTime", time)
 

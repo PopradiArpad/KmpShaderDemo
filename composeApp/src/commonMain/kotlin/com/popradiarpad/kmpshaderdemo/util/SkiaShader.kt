@@ -10,7 +10,8 @@ import kotlin.time.Duration
 import kotlin.time.measureTime
 
 /**
- * A Modifier that runs a shader on the Composable surface.
+ * A Modifier that runs a shader creating a background of the Composable applied to,
+ * in opposite to manipulating the appearance of the containing Composables.
  * The shader gets some parameters and must be prepared to handle them.
  *
  * The shader must have the following uniforms:
@@ -23,7 +24,7 @@ import kotlin.time.measureTime
  * layout(color) uniform half4 uColor1; // A color parameter
  */
 @Composable
-expect fun Modifier.runPointerInputTimeShader(shaderCode: String, color1: Color? = null): Modifier
+expect fun Modifier.runPointerInputTimeBackgroundShader(shaderCode: String, color1: Color? = null): Modifier
 
 /**
  * The time in second since entering into composition in max FPS tact.

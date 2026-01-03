@@ -71,7 +71,7 @@ private const val ROTATING_HUE_GLOWING_RING_SHADER = """
     half4 main(float2 pixel) {
         // Get direction vector from touch to current pixel.
         float2 direction = pixel - uTouchPos;
-        float d = length(direction);
+        float distance = length(direction);
 
         // Determine hue.
         // Calculate the angle (0 to 2*PI) and normalize it to [0..1] for the Hue.
@@ -89,8 +89,8 @@ private const val ROTATING_HUE_GLOWING_RING_SHADER = """
         // then exponential decay. 
         float radius = 300.0; 
         float glowThickness = 30.0;
-        float mask = smoothstep(radius - glowThickness, radius, d);
-        float intensity = mask * exp(-abs(d - radius) * 0.03);
+        float mask = smoothstep(radius - glowThickness, radius, distance);
+        float intensity = mask * exp(-abs(distance - radius) * 0.03);
         
         // Mix the background content with the glow.
         return background.eval(pixel) + (color * intensity);

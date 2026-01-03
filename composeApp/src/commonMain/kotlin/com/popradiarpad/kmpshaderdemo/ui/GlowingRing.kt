@@ -28,7 +28,7 @@ private const val ROTATING_HUE_GLOWING_RING_SHADER = """
     * Hue (which color)
     * Intensity (of the color)
     
-    The form is rotational symmetric so the geometry get simplified to a radial half line from the circle center.
+    The form is rotational symmetric so the geometry get simplified to a radial half-line from the circle center.
     
     For the hue we need a mathematical formula to map hue from angle.
     
@@ -81,7 +81,7 @@ private const val ROTATING_HUE_GLOWING_RING_SHADER = """
         half4 color = half4(hueToRgb(hue), 1.0);
         
         // Determine intensity: the glow around the ring.
-        // Think in the half line from circle center over the pixel positon.
+        // Think in the half-line from circle center over the pixel positon.
         // The center is the origo.
         // We want a smooth glowing:
         // From center to (radius - glowThickness) nothing,

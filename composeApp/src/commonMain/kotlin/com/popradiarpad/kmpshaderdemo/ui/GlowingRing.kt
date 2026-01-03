@@ -37,7 +37,7 @@ private const val ROTATING_HUE_GLOWING_RING_SHADER = """
     In the calculations we often use normalized ranges to keep the overview.
     */
     
-    uniform shader content;    // The background content, the variable name is indifferent, SkSL uses the first uniform shader type as the background.
+    uniform shader background; // The background, the variable name is indifferent, SkSL uses the first uniform shader type as the background.
                                // Not deliviered by the shader runner.
     uniform float2 uSize;      // The surface size, required by the shader runner
     uniform float uTimeS;      // The time in seconds since composition, required by the shader runner
@@ -93,7 +93,7 @@ private const val ROTATING_HUE_GLOWING_RING_SHADER = """
         float intensity = mask * exp(-abs(d - radius) * 0.03);
         
         // Mix the background content with the glow.
-        return content.eval(pixel) + (color * intensity);
+        return background.eval(pixel) + (color * intensity);
     }
 """
 

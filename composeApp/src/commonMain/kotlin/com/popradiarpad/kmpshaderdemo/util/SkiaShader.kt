@@ -33,7 +33,9 @@ expect fun Modifier.runPointerInputTimeBackgroundShader(shaderCode: String, colo
  */
 @Composable
 fun rememberTimeMaxFPS_S() = produceState(0f) {
+    // REMARK: produceState is already remembered.
     while (true) {
+        // Suspends until a new frame is requested, it delivers the frame time in milliseconds.
         withInfiniteAnimationFrameMillis { frameTimeMillis ->
             value = frameTimeMillis / 1000f
         }

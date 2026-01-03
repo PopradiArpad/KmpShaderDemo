@@ -48,21 +48,23 @@ private const val ROTATING_HUE_GLOWING_RING_SHADER = """
     This function in three instances is used to get the R, G, B values for the hue.
     Having the same function with equally shifted phases creates beautiful periodic hue.
     */
-    float wave(float x, float stretchFactor) {
-        return sin(x * 6.2832) * 0.5 * stretchFactor + 0.5;
+    half wave(half x, half stretchFactor) {
+        // 6.28318 is 2 * PI
+        return sin(x * 6.28318) * 0.5 * stretchFactor + 0.5;
     }
         
     // Map color to float.    
-    half4 hueToRgba(float h) {
-        // Bigger then 1 stretches the sinus out of [0..1]
-        // which later will be clamped back, and the flat sections
-        // cause a peaking effect in the color circle.
-        float stretchFactor = 1;
+    half3 hueToRgb(float hue) {
+        // h is float to maintain precision over time, 
+        // but the resulting colors can be half.
+        half h_half = half(hue);
+        half stretchFactor = 1.0;
     
-        float r = wave(h, stretchFactor);
-        float b = wave(h - 0.333, stretchFactor);
-        float g = wave(h + 0.333, stretchFactor);
-        return half4(clamp(float3(r, g, b), 0.0, 1.0), 1.0);
+        half r = wave(h_half, stretchFactor);
+        half b = wave(h_half - 0.333, stretchFactor);
+        half g = wave(h_half + 0.333, stretchFactor);
+        
+        return clamp(half3(r, g, b), 0.0, 1.0);
     }
     
     // Map color to pixel(position).
@@ -76,7 +78,7 @@ private const val ROTATING_HUE_GLOWING_RING_SHADER = """
         // atan2 returns angle; we add uTimeS to make the colors spin.
         float angle = atan(direction.y, direction.x) / 6.28318 + 0.5;
         float hue = fract(angle + uTimeS * 0.5);
-        half4 color = hueToRgba(hue);
+        half4 color = half4(hueToRgb(hue), 1.0);
         
         // Determine intensity: the glow around the ring.
         // Think in the half line from circle center over the pixel positon.

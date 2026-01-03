@@ -44,7 +44,7 @@ private const val ROTATING_HUE_GLOWING_RING_SHADER = """
     uniform float2 uTouchPos;  // The touch position, required by the shader runner.
 
     /*
-    A periodic function on [0..1] mapping into [0..1] (when stretchFactor is 1)
+    A function on [0..1] mapping into [0..1] (when stretchFactor is 1)
     This function in three instances is used to get the R, G, B values for the hue.
     Having the same function with equally shifted phases creates beautiful periodic hue.
     */
@@ -53,7 +53,7 @@ private const val ROTATING_HUE_GLOWING_RING_SHADER = """
         return sin(x * 6.28318) * 0.5 * stretchFactor + 0.5;
     }
         
-    // Map color to float.    
+    // Map normalized to RGB.    
     half3 hueToRgb(float hue) {
         // h is float to maintain precision over time, 
         // but the resulting colors can be half.
@@ -97,3 +97,52 @@ private const val ROTATING_HUE_GLOWING_RING_SHADER = """
     }
 """
 
+// language=GLSL
+private const val MEDIUM_ARTICLE_VERSION_OF_ROTATING_HUE_GLOWING_RING_SHADER = """
+    uniform shader background; // The background, the variable name is indifferent, SkSL uses the first uniform shader type as the background.
+                               // Not deliviered by the shader runner.
+    uniform float2 uSize;      // The surface size, required by the shader runner
+    uniform float uTimeS;      // The time in seconds since composition, required by the shader runner
+    uniform float2 uTouchPos;  // The touch position, required by the shader runner.
+
+    half wave(half normalized) {
+        return sin(normalized * 6.28318) * 0.5 + 0.5;
+    }
+        
+    half3 hueToRgb(float h) {
+        half r = wave(h);
+        half g = wave(h - 0.333);
+        half b = wave(h + 0.333);
+        return half3(r, g, b);
+    }
+    
+    // Map color to pixel(position).
+    half4 main(float2 pixel) {
+        // Get direction vector from touch to current pixel.
+        float2 direction = pixel - uTouchPos;
+        float distance = length(direction);
+
+        // Determine hue.
+        // First calculate the angle of [-PI..PI] and normalize it to [0..1].
+        float angle = atan(direction.y, direction.x) / 6.28318 + 0.5;
+        // Mix time to it to make the hue spin but keep normalization.
+        float hue = fract(angle + uTimeS);
+        // Map [0..1] to all the hue colors as half4 in [0..1].
+        half4 color = half4(hueToRgb(hue), 1.0);
+        
+        // Determine intensity: the glow around the ring.
+        // Think in the half-line from circle center over the pixel positon.
+        // The center is the origo.
+        // We want a smooth glowing:
+        // From center to (radius - glowThickness) nothing,
+        // then linearly amplified up to radius,
+        // then exponential decay. 
+        float radius = 300.0; 
+        float glowThickness = 30.0;
+        float mask = smoothstep(radius - glowThickness, radius, distance);
+        float intensity = mask * exp(-abs(distance - radius) * 0.03);
+        
+        // Mix the background content with the glow.
+        return background.eval(pixel) + (color * intensity);
+    }
+"""

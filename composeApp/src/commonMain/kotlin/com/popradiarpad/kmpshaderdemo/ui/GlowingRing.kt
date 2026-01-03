@@ -61,8 +61,8 @@ private const val ROTATING_HUE_GLOWING_RING_SHADER = """
         half stretchFactor = 1.0;
     
         half r = wave(h_half, stretchFactor);
-        half b = wave(h_half - 0.333, stretchFactor);
-        half g = wave(h_half + 0.333, stretchFactor);
+        half g = wave(h_half - 0.333, stretchFactor);
+        half b = wave(h_half + 0.333, stretchFactor);
         
         return clamp(half3(r, g, b), 0.0, 1.0);
     }

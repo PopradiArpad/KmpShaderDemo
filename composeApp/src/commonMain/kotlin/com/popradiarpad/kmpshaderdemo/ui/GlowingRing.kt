@@ -34,7 +34,7 @@ private const val ROTATING_HUE_GLOWING_RING_SHADER = """
     
     The intensity will be a mix of linear amplification and exponential decay on the radial line.
     
-    In the calculations we often use normalized ranges to keep the overview.
+    In the calculations we often use normalized ranges to keep an overview.
     */
     
     uniform shader background; // The background, the variable name is indifferent, SkSL uses the first uniform shader type as the background.
@@ -53,10 +53,7 @@ private const val ROTATING_HUE_GLOWING_RING_SHADER = """
         return sin(x * 6.28318) * 0.5 * stretchFactor + 0.5;
     }
         
-    // Map normalized to RGB.    
     half3 hueToRgb(float hue) {
-        // h is float to maintain precision over time, 
-        // but the resulting colors can be half.
         half h_half = half(hue);
         half stretchFactor = 1.0;
     

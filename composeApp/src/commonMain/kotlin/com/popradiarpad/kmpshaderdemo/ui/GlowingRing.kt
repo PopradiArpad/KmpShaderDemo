@@ -67,13 +67,13 @@ private const val ROTATING_HUE_GLOWING_RING_SHADER = """
         return clamp(half3(r, g, b), 0.0, 1.0);
     }
     
-    // Map color to pixel(position).
+    // Map pixel(position) to color.
     half4 main(float2 pixel) {
         // Get direction vector from touch to current pixel.
         float2 direction = pixel - uTouchPos;
         float distance = length(direction);
 
-        // Determine hue.
+        // Determine hue:
         // Calculate the angle (0 to 2*PI) and normalize it to [0..1] for the Hue.
         // atan2 returns angle; we add uTimeS to make the colors spin.
         float angle = atan(direction.y, direction.x) / 6.28318 + 0.5;
@@ -116,13 +116,13 @@ private const val MEDIUM_ARTICLE_VERSION_OF_ROTATING_HUE_GLOWING_RING_SHADER = "
         return half3(r, g, b);
     }
     
-    // Map color to pixel(position).
+    // Map pixel(position) to color.
     half4 main(float2 pixel) {
         // Get direction vector from touch to current pixel.
         float2 direction = pixel - uTouchPos;
         float distance = length(direction);
 
-        // Determine hue.
+        // Determine hue:
         // First calculate the angle of [-PI..PI] and normalize it to [0..1].
         float angle = atan(direction.y, direction.x) / 6.28318 + 0.5;
         // Mix time to it to make the hue spin but keep normalization.

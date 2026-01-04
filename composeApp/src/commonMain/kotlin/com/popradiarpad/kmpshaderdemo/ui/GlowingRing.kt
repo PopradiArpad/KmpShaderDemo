@@ -90,7 +90,7 @@ private const val ROTATING_HUE_GLOWING_RING_SHADER = """
         float radius = 300.0; 
         float glowThickness = 30.0;
         float mask = smoothstep(radius - glowThickness, radius, distance);
-        float intensity = mask * exp(-abs(distance - radius) * 0.03);
+        float intensity = mask * exp(-(distance - radius) * 0.03);
         
         // Mix the background content with the glow.
         return background.eval(pixel) + (color * intensity);
@@ -140,7 +140,7 @@ private const val MEDIUM_ARTICLE_VERSION_OF_ROTATING_HUE_GLOWING_RING_SHADER = "
         float radius = 300.0; 
         float glowThickness = 30.0;
         float mask = smoothstep(radius - glowThickness, radius, distance);
-        float intensity = mask * exp(-abs(distance - radius) * 0.03);
+        float intensity = mask * exp(-(distance - radius) * 0.03);
         
         // Mix the background content with the glow.
         return background.eval(pixel) + (color * intensity);

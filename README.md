@@ -2,7 +2,7 @@
 
 https://github.com/user-attachments/assets/9ae9a95b-6e84-4fa0-b4cc-1edcd466d287
 
-π[Read the full guide in this Medium article](https://medium.com/@popradi.arpad11/integrating-shaders-into-a-compose-multiplatform-project-1bb4e55aced1)
+[Read the full guide in this Medium article](https://medium.com/@popradi.arpad11/integrating-shaders-into-a-compose-multiplatform-project-1bb4e55aced1)
 
 ## The Shader Runner
 Implemented as a modifier.

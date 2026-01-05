@@ -10,22 +10,19 @@ import kotlin.time.Duration
 import kotlin.time.measureTime
 
 /**
- * This shader runner can manipulate the background of the Composable applied to,
- * but can not manipulate appearance of the children.
+ * Executes an SkSL shader as a background.
  *
- * The shader gets some parameters and must be prepared to handle them.
- *
- * The shader must have the following uniforms:
- * * uniform float2 uSize;     // The size of the surface the shader is running in (width, height) pixels
- * * uniform float uTimeS;     // The time in seconds since entering into composition.
- * * uniform float2 uTouchPos; // The position of the touch event within the surface in pixels. The origo is the same as of Compose Offset.
+ * Expects the following uniforms:
+ * - uniform float2 uSize;     // The size of the surface the shader is running in (width, height) pixels.
+ * - uniform float uTimeS;     // The time in seconds since entering into composition.
+ * - uniform float2 uTouchPos; // The position of the touch event within the surface in pixels. The origo is the same as of Compose Offset.
  *
  * When @param color1 is not null then the shader must have the following uniform:
  *
- * layout(color) uniform half4 uColor1; // A color parameter
+ * - layout(color) uniform half4 uColor1; // A color parameter
  */
 @Composable
-expect fun Modifier.runPointerInputTimeBackgroundShader(shaderCode: String, color1: Color? = null): Modifier
+expect fun Modifier.runTapTimeBackgroundShader(shaderCode: String, color1: Color? = null): Modifier
 
 /**
  * The time in second since entering into composition in max FPS tact.

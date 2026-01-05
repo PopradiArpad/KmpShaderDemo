@@ -26,7 +26,7 @@ import androidx.compose.ui.layout.onSizeChanged
  * Compose on Android is built directly on top of the native Android Canvas and Graphics pipeline.
  */
 @Composable
-actual fun Modifier.runPointerInputTimeBackgroundShader(
+actual fun Modifier.runTapTimeBackgroundShader(
     shaderCode: String, color1: Color?
 ): Modifier {
     val shader = remember(shaderCode) { RuntimeShader(shaderCode) }

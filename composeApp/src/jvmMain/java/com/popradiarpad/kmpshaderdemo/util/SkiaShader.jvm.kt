@@ -22,7 +22,7 @@ import org.jetbrains.skia.RuntimeShaderBuilder
  * to avoid code multiplication.
  */
 @Composable
-actual fun Modifier.runPointerInputTimeBackgroundShader(
+actual fun Modifier.runTapTimeBackgroundShader(
     shaderCode: String,
     color1: Color?
 ): Modifier {

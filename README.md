@@ -2,6 +2,8 @@
 
 https://github.com/user-attachments/assets/9ae9a95b-6e84-4fa0-b4cc-1edcd466d287
 
+A detailed guide on Medium **[Integrating Shaders into a Compose Multiplatform Project](https://medium.com/@popradi.arpad11/integrating-shaders-into-a-compose-multiplatform-project-1bb4e55aced1)** 
+
 ## The Shader Runner
 Implemented as a modifier.
 

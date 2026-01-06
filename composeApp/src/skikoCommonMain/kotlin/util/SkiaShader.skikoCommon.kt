@@ -18,8 +18,6 @@ import org.jetbrains.skia.RuntimeShaderBuilder
 
 /**
  * The Skiko implementation for all non-Android platforms.
- * Unfortunately I don't know how to put this into a source set for all such platforms
- * to avoid code multiplication.
  */
 @Composable
 actual fun Modifier.runTapTimeBackgroundShader(
